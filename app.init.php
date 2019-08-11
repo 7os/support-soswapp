@@ -1,11 +1,11 @@
 <?php
 // load up app settings
 $conf_path = \str_replace([
-  "/vendor/7os/web-page-support",
-  "/dev/7os/web-page-support",
+  "/vendor/7os/web-app-support",
+  "/dev/7os/web-app-support",
   "\\vendor\\7os\\web-page-support",
   "\\dev\\7os\\web-page-support",
-],"",__DIR__) . "/.system/appdata/7os/web-page-support";
+],"",__DIR__) . "/.system/appdata/7os/web-app-support";
 $conf_file = $conf_path . "/app.config";
 
 if (!\file_exists($conf_file) || !\is_readable($conf_file)) {
