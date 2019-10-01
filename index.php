@@ -1,4 +1,6 @@
 <?php
+namespace TymFrontiers;
+use \Michelf\Markdown;
 require_once "app.init.php";
 require_once APP_BASE_INC;
 ?>
@@ -6,14 +8,14 @@ require_once APP_BASE_INC;
 <html lang="en" dir="ltr" manifest="./site.manifest">
   <head>
     <meta charset="utf-8">
-    <title>7 OS Web App</title>
+    <title>Support | <?php echo PRJ_TITLE; ?></title>
     <?php include PRJ_INC_ICONSET; ?>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <meta name="keywords" content="7, seven, os, operating, system, template">
-    <meta name="description" content="7 OS Web - app template">
-    <meta name="author" content="Your developer">
-    <meta name="creator" content="7 OS">
-    <meta name="publisher" content="Your company">
+    <meta name="keywords" content="<?php echo PRJ_KEYWORDS; ?>">
+    <meta name="description" content="<?php echo PRJ_DESCRIPTION; ?>">
+    <meta name="author" content="<?php echo PRJ_AUTHOR; ?>">
+    <meta name="creator" content="<?php echo PRJ_CREATOR; ?>">
+    <meta name="publisher" content="<?php echo PRJ_PUBLISHER; ?>">
     <meta name="robots" content='index'>
     <!-- Theming styles -->
     <link rel="stylesheet" href="//cdn.tymfrontiers.net/get/7os/web-theme/web-theme.css">
@@ -28,8 +30,16 @@ require_once APP_BASE_INC;
   <body>
     <?php include PRJ_INC_HEADER; ?>
     <section id="main-content">
-      <h1>7 OS Web - App</h1>
-      <p>Here is a sample web app</p>
+      <div class="view-space">
+        <div class="sec-div padding -p10">
+          <?php
+          if (\file_exists(PRJ_ROOT . "/src/prj-support.md") && $support = \file_get_contents(PRJ_ROOT . "/src/prj-support.md")) {
+            $support = Markdown::defaultTransform($support);
+            echo $support;
+          }
+           ?>
+        </div>
+      </div>
     </section>
     <?php include PRJ_INC_FOOTER; ?>
     <!-- Required scripts -->
